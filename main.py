@@ -16,11 +16,11 @@ def start(best_buy):
         choice = input("Please choose a number: ").strip()
 
         if choice == "1":
-            print("------")
+
             product_list = best_buy.get_all_products()
             for i, product in enumerate(product_list, start=1):
                 print(f"{i}. {product}")
-            print("------")
+
 
         elif choice == "2":
             total = best_buy.get_total_quantity()
@@ -29,10 +29,10 @@ def start(best_buy):
         elif choice == "3":
             product_list = best_buy.get_all_products()
 
-            print("------")
+
             for i, product in enumerate(product_list, start=1):
                 print(f"{i}. {product}")
-            print("------")
+
 
             print("When you want to finish order, enter empty text.")
             shopping_list = []
