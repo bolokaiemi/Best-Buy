@@ -1,8 +1,20 @@
 import products
 import store
 
-
 def start(best_buy):
+    """
+    Starts the interactive store menu for the user.
+
+    Parameters:
+    best_buy (store.Store): An instance of the Store class containing products.
+
+    Functionality:
+    - Lists all products
+    - Shows total quantity of items in the store
+    - Allows making an order by selecting products and specifying amounts
+    - Validates user input strictly
+    - Processes the order and prints the total price
+    """
     while True:
         print("""
    Store Menu
@@ -16,11 +28,9 @@ def start(best_buy):
         choice = input("Please choose a number: ").strip()
 
         if choice == "1":
-
             product_list = best_buy.get_all_products()
             for i, product in enumerate(product_list, start=1):
                 print(f"{i}. {product}")
-
 
         elif choice == "2":
             total = best_buy.get_total_quantity()
@@ -28,11 +38,8 @@ def start(best_buy):
 
         elif choice == "3":
             product_list = best_buy.get_all_products()
-
-
             for i, product in enumerate(product_list, start=1):
                 print(f"{i}. {product}")
-
 
             print("When you want to finish order, enter empty text.")
             shopping_list = []
@@ -44,7 +51,7 @@ def start(best_buy):
 
                 amount = input("What amount do you want? ").strip()
 
-                # strict validation (matches your output)
+                # strict validation
                 if (not choice.isdigit() or
                     int(choice) < 1 or
                     int(choice) > len(product_list) or
@@ -63,7 +70,7 @@ def start(best_buy):
                 if shopping_list:
                     print(f"Order made! Total price: ${total_price}")
             except Exception as e:
-                print(f" Error placing order: {e}")
+                print(f"Error placing order: {e}")
 
         elif choice == "4":
             print("Goodbye!")
@@ -74,6 +81,9 @@ def start(best_buy):
 
 
 def main():
+    """
+    Sets up the store inventory and starts the store interface.
+    """
     product_list = [
         products.Product("MacBook Air M2", price=1450, quantity=100),
         products.Product("Bose QuietComfort Earbuds", price=250, quantity=500),
